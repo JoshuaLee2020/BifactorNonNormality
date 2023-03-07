@@ -1,0 +1,356 @@
+---
+title: "Report of Theta of Nonnormal Bifactor Model"
+author: "Jujia"
+format: html
+editor: visual
+---
+
+```{r, echo=FALSE, message=FALSE}
+#Merge convergence status and parameters
+#para.theta.all <- left_join(para.data.all, files.all ,by="id.rep")
+rm(list=ls())
+library(tidyr)
+library(dplyr)
+library(readr)
+library(parallel)
+library(mirt)
+library(stringr)
+library(ggplot2)
+```
+
+##### Calculate Bias and Rmse
+
+```{r, echo=FALSE}
+# Set folder and Input data
+main.folder <- "D:/BifactorNonNormality"
+data.folder <- paste0(main.folder,"/Data/")
+result.folder <- paste0(main.folder,"/Result/")
+para.theta.all <- read.csv(paste0(result.folder,"thetas.csv"),header = TRUE)
+
+
+#Calculate the delta of each parameters
+theta.mirt.MAP.report <- para.theta.all%>%
+  filter(!is.infinite(thetaG.mirt.map))%>%
+  filter(!is.infinite(thetaS.avg.mirt.map))%>%          
+  mutate(
+    Factor = paste0("Factor: ",Factor),
+    I = paste0("Item: ",I),
+    thetaG.mirt.map.delta = as.numeric(thetaG.mirt.map) - as.numeric(thetaG.real),
+    thetaS.mirt.map.delta = as.numeric(thetaS.avg.mirt.map) - as.numeric(thetaS.avg.real)
+  )
+#"Infinite Number in MAP:"
+nrow(para.theta.all)-nrow(theta.mirt.MAP.report)
+
+theta.mirt.ML.report <- para.theta.all%>%
+  filter(!is.infinite(thetaG.mirt.ml))%>%
+  filter(!is.infinite(thetaS.avg.mirt.ml))%>%          
+  mutate(
+    Factor = paste0("Num of Factor:",Factor),
+    I = paste0("Item per Factor:",I),
+    thetaG.mirt.ml.delta = as.numeric(thetaG.mirt.ml) - as.numeric(thetaG.real),
+    thetaS.mirt.ml.delta = as.numeric(thetaS.avg.mirt.ml) - as.numeric(thetaS.avg.real)
+  )
+#"Infinite Number in ML:"
+nrow(para.theta.all)-nrow(theta.mirt.ML.report)
+
+
+
+#Arrange skewness according normal to severe
+order_vec <- c("Normal", "Moderate", "Severe")
+
+#Calculate bias and rmse of MAP
+theta.mirt.MAP.summarise <- theta.mirt.MAP.report%>%
+  group_by(Factor, I, N, Fg, Fs)%>%
+  summarise(
+    thetaG.mirt.map.bias = round(mean(thetaG.mirt.map.delta),3),
+    thetaS.mirt.map.bias = round(mean(thetaS.mirt.map.delta),3),
+    thetaG.mirt.map.rmse = round(sqrt(mean((thetaG.mirt.map.delta)^2)),3),
+    thetaS.mirt.map.rmse = round(sqrt(mean((thetaS.mirt.map.delta)^2)),3)
+            )%>%
+  mutate(Fg = factor(Fg, levels = order_vec),
+         Fs = factor(Fs, levels = order_vec)) %>%
+  arrange(Fg,Fs) %>%
+  mutate(N = as.factor(N))
+
+#Calculate bias and rmse of ML
+theta.mirt.ML.summarise <- theta.mirt.ML.report%>%
+  group_by(Factor, I, N, Fg, Fs)%>%
+  summarise(
+    thetaG.mirt.ml.bias = round(mean(thetaG.mirt.ml.delta),3),
+    thetaS.mirt.ml.bias = round(mean(thetaS.mirt.ml.delta),3),    
+    thetaG.mirt.ml.rmse = round(sqrt(mean((thetaG.mirt.ml.delta)^2)),3),
+    thetaS.mirt.ml.rmse = round(sqrt(mean((thetaS.mirt.ml.delta)^2)),3)
+            )%>%
+  mutate(Fg = factor(Fg, levels = order_vec),
+         Fs = factor(Fs, levels = order_vec)) %>%
+  arrange(Fg,Fs) %>%
+  mutate(N = as.factor(N))
+
+
+write.csv(theta.mirt.MAP.summarise,paste0(result.folder,"summa_theta_MAP.csv"))
+write.csv(theta.mirt.ML.summarise,paste0(result.folder,"summa_theta_ML.csv"))
+#summary(para.theta.summarise)
+```
+
+##### Merge all Bias and Rmse into a longer table
+
+```{r, echo=FALSE}
+theta.mirt.MAP.long <- theta.mirt.MAP.summarise %>%
+  pivot_longer(
+    cols = thetaG.mirt.map.bias : thetaS.mirt.map.rmse,
+    names_to = "metrics_name",
+    values_to = "value"
+  ) 
+
+
+
+theta.mirt.ML.long <- theta.mirt.ML.summarise %>%
+  pivot_longer(
+    cols = thetaG.mirt.ml.bias : thetaS.mirt.ml.rmse,
+    names_to = "metrics_name",
+    values_to = "value"
+  ) 
+
+theta.mirt.long <- rbind(theta.mirt.MAP.long, theta.mirt.ML.long)
+
+```
+
+### 1. Bias of Theta
+
+```{}
+```
+
+##### Plot comparison of thetaG and thetaS, under 1000 sample size
+
+```{r, echo=FALSE}
+df_1000 <- theta.mirt.long %>%
+  filter(N==1000,
+    metrics_name == "thetaG.mirt.map.bias"|
+    metrics_name == "thetaS.mirt.map.bias"|
+    metrics_name == "thetaG.mirt.ml.bias"|
+    metrics_name == "thetaS.mirt.ml.bias"
+  )%>%
+  mutate(metrics_name = factor(metrics_name, levels = c("thetaG.mirt.map.bias",
+              "thetaS.mirt.map.bias","thetaG.mirt.ml.bias","thetaS.mirt.ml.bias")))%>%
+  arrange(metrics_name)
+
+p1 <- ggplot(data = df_1000, aes (x = interaction(Fs,Fg), y = value, color = metrics_name)) +
+  geom_point()+
+  scale_color_manual(values = c("#1cb061", "#97e6bb", "#e66c20", "#e6a781"))+
+  facet_wrap(I~Factor)+
+  #facet_grid(cols=vars(smoke, black))+
+  labs(title = "Bias of theta in General Factor and Specific Factor under 1000 Sample Size")+
+  theme(axis.text.x=element_text(angle=-90, vjust=0.4,hjust=1.2),
+        plot.title = element_text(hjust = 0.5))+
+  geom_hline(yintercept = 0)+
+  geom_vline(xintercept = c(3.5,6.5) , linetype = "dashed")
+p1
+```
+
+##### Plot comparison of thetaG and thetaS, under 250 sample size
+
+```{r, echo=FALSE}
+df_250 <- theta.mirt.long %>%
+  filter(N==250,
+    metrics_name == "thetaG.mirt.map.bias"|
+    metrics_name == "thetaS.mirt.map.bias"|
+    metrics_name == "thetaG.mirt.ml.bias"|
+    metrics_name == "thetaS.mirt.ml.bias"
+  )%>%
+  mutate(metrics_name = factor(metrics_name, levels = c("thetaG.mirt.map.bias",
+              "thetaS.mirt.map.bias","thetaG.mirt.ml.bias","thetaS.mirt.ml.bias")))%>%
+  arrange(metrics_name)
+
+p1 <- ggplot(data = df_250, aes (x = interaction(Fs,Fg), y = value, color = metrics_name)) +
+  geom_point()+
+  scale_color_manual(values = c("#1cb061", "#97e6bb", "#e66c20", "#e6a781"))+
+  facet_wrap(I~Factor)+
+  #facet_grid(cols=vars(smoke, black))+
+  labs(title = "Bias of theta in General Factor and Specific Factor under 250 Sample Size")+
+  theme(axis.text.x=element_text(angle=-90, vjust=0.4,hjust=1.2),
+        plot.title = element_text(hjust = 0.5))+
+  geom_hline(yintercept = 0)+
+  geom_vline(xintercept = c(3.5,6.5) , linetype = "dashed")
+p1
+```
+
+### 2. RMSE
+
+##### Plot rmse of thetaG and thetaS, under 1000 sample size
+
+```{r, echo=FALSE}
+df_1000 <- theta.mirt.long %>%
+  filter(N==1000,
+    metrics_name == "thetaG.mirt.map.rmse"|
+    metrics_name == "thetaS.mirt.map.rmse"|
+    metrics_name == "thetaG.mirt.ml.rmse"|
+    metrics_name == "thetaS.mirt.ml.rmse"
+  )%>%
+  mutate(metrics_name = factor(metrics_name, levels = c("thetaG.mirt.map.rmse",
+              "thetaS.mirt.map.rmse","thetaG.mirt.ml.rmse","thetaS.mirt.ml.rmse")))%>%
+  arrange(metrics_name)
+
+p1 <- ggplot(data = df_1000, aes (x = interaction(Fs,Fg), y = value, color = metrics_name)) +
+  geom_point()+
+  scale_color_manual(values = c("#1cb061", "#97e6bb", "#e66c20", "#e6a781"))+
+  facet_wrap(I~Factor)+
+  #facet_grid(cols=vars(smoke, black))+
+  labs(title = "RMSE of theta of General Factor and Specific Factor under 1000 Sample Size")+
+  theme(axis.text.x=element_text(angle=-90, vjust=0.4,hjust=1.2),
+        plot.title = element_text(hjust = 0.5))+
+  geom_hline(yintercept = 0)+
+  geom_vline(xintercept = c(3.5,6.5) , linetype = "dashed")
+p1
+```
+
+##### Plot rmse of thetaG and thetaS, under 250 sample size
+
+```{r, echo=FALSE}
+df_250 <- theta.mirt.long %>%
+  filter(N==250,
+    metrics_name == "thetaG.mirt.map.bias"|
+    metrics_name == "thetaS.mirt.map.bias"|
+    metrics_name == "thetaG.mirt.ml.bias"|
+    metrics_name == "thetaS.mirt.ml.bias"
+  )%>%
+  mutate(metrics_name = factor(metrics_name, levels = c("thetaG.mirt.map.bias",
+              "thetaS.mirt.map.bias","thetaG.mirt.ml.bias","thetaS.mirt.ml.bias")))%>%
+  arrange(metrics_name)
+
+p1 <- ggplot(data = df_250, aes (x = interaction(Fs,Fg), y = value, color = metrics_name)) +
+  geom_point()+
+  scale_color_manual(values = c("#1cb061", "#97e6bb", "#e66c20", "#e6a781"))+
+  facet_wrap(Factor~I)+
+  #facet_grid(cols=vars(smoke, black))+
+  labs(title = "RMSE of theta of General Factor and Specific Factor under 250 Sample Size")+
+  theme(axis.text.x=element_text(angle=-90, vjust=0.4,hjust=1.2),
+        plot.title = element_text(hjust = 0.5))+
+  geom_hline(yintercept = 0)+
+  geom_vline(xintercept = c(3.5,6.5) , linetype = "dashed")
+p1
+```
+
+### 3. Outliers
+
+```{r, echo=FALSE}
+df <- theta.mirt.MAP.report%>%
+  mutate(Fg = factor(Fg, levels = order_vec),
+         Fs = factor(Fs, levels = order_vec)) %>%
+  arrange(Fg,Fs) %>%
+  mutate(N = as.factor(N))
+
+
+p1 <- ggplot(data = df, aes (x = interaction(Fs,Fg), y = thetaG.mirt.map.delta, fill = N)) +
+  geom_boxplot(color="#555555")+
+  facet_wrap(I~Factor)+
+  #facet_grid(cols=vars(smoke, black))+
+  labs(title = "Bias of all Thetas")+
+  theme(axis.text.x=element_text(angle=-90, vjust=0.4,hjust=1.2),
+        plot.title = element_text(hjust = 0.5))+
+  geom_hline(yintercept = 0)+
+  geom_vline(xintercept = c(3.5,6.5) , linetype = "dashed")+
+  scale_fill_manual(values = c("#999999", "#E69F00", "#009E73", "#0072B2"))
+
+p1
+```
+
+### 4. Trends in all conditions
+
+##### Bias of a in General Factor (Trim Outliers \> 3)
+
+```{r, echo=FALSE}
+df <- theta.mirt.MAP.report%>%
+  filter(thetaG.mirt.map<=3,thetaS.avg.mirt.map<=3, thetaG.mirt.ml<=3,thetaS.avg.mirt.ml<=3)%>%
+  mutate(Fg = factor(Fg, levels = order_vec),
+         Fs = factor(Fs, levels = order_vec)) %>%
+  arrange(Fg,Fs) %>%
+  mutate(N = as.factor(N))
+
+nrow(para.theta.report)-nrow(df)
+print("Deleted")
+
+p1 <- ggplot(data = df, aes (x = interaction(Fs,Fg), y = thetaG.mirt.map.delta, fill = N)) +
+  geom_boxplot(color="#555555")+
+  facet_wrap(I~Factor)+
+  #facet_grid(cols=vars(smoke, black))+
+  labs(title = "Bias of theta in General Factor (Trim Outliers > 3)")+
+  theme(axis.text.x=element_text(angle=-90, vjust=0.4,hjust=1.2),
+        plot.title = element_text(hjust = 0.5))+
+  geom_hline(yintercept = 0)+
+  geom_vline(xintercept = c(3.5,6.5) , linetype = "dashed")+
+  scale_fill_manual(values = c("#999999", "#E69F00", "#009E73", "#0072B2"))
+
+p1
+```
+
+##### Bias of theta in Specific Factor (Trim Outliers \>1)
+
+```{r, echo=FALSE}
+df <- theta.mirt.MAP.report%>%
+  filter(thetaG.mirt.map<=1,thetaS.avg.mirt.map<=1, thetaG.mirt.ml<=1,thetaS.avg.mirt.ml<=1)%>%
+  mutate(Fg = factor(Fg, levels = order_vec),
+         Fs = factor(Fs, levels = order_vec)) %>%
+  arrange(Fg,Fs) %>%
+  mutate(N = as.factor(N))
+
+nrow(para.theta.report)-nrow(df)
+print("Deleted")
+
+p1 <- ggplot(data = df, aes (x = interaction(Fs,Fg), y = thetaG.mirt.map.delta, fill = N)) +
+  geom_boxplot(color="#555555")+
+  facet_wrap(I~Factor)+
+  #facet_grid(cols=vars(smoke, black))+
+  labs(title = "Bias of a in Specific Factor (Trim Outliers > 1.5)")+
+  theme(axis.text.x=element_text(angle=-90, vjust=0.4,hjust=1.2),
+        plot.title = element_text(hjust = 0.5))+
+  geom_hline(yintercept = 0)+
+  geom_vline(xintercept = c(3.5,6.5) , linetype = "dashed")+
+  scale_fill_manual(values = c("#999999", "#E69F00", "#009E73", "#0072B2"))
+
+p1
+```
+
+### 5. IMPACT of all conditions
+
+##### ANOVA for thetaG - theta on General Factor
+
+```{r, echo=FALSE}
+model.thetaG <- aov(thetaG.mirt.map.bias ~ Factor*I*N*Fg*Fs, data=theta.mirt.MAP.summarise)
+s.thetaG <- summary(model.thetaG)
+s.thetaG[[1]][s.thetaG[[1]][["Pr(>F)"]] < 0.05, ]
+
+
+#model.aG2 <- aov(aG.mirt.bias ~ Factor+I+N+Fg+Fs, data=para.theta.summarise)
+#summary(model.aG2)
+
+#tukey.a.G2 <- TukeyHSD(model.a.G2, "Factor")
+#tukey.a.G2
+```
+
+##### ANOVA for thetaS - theta on Specific Factor
+
+```{r, echo=FALSE}
+model.thetaS <- aov(thetaS.mirt.map.bias ~ Factor*I*N*Fg*Fs, data=theta.mirt.MAP.summarise)
+s.thetaS <- summary(model.thetaS)
+s.thetaS[[1]][s.thetaS[[1]][["Pr(>F)"]] < 0.05 , ]
+
+
+#model.aS2 <- aov(aS.mirt.bias ~ Factor+I+N+Fg+Fs, data=para.theta.summarise)
+#summary(model.aS2)
+```
+
+##### ANOVA for thetaG - theta on General Factor using ML
+
+```{r, echo=FALSE}
+model.thetaG.ml <- aov(thetaG.mirt.ml.bias ~ Factor*I*N*Fg*Fs, data=theta.mirt.ML.summarise)
+s.thetaG.ml <- summary(model.thetaG.ml)
+s.thetaG.ml[[1]][s.thetaG.ml[[1]][["Pr(>F)"]] < 0.05, ]
+```
+
+##### ANOVA for thetaS - theta on Specific Factor using ML
+
+```{r, echo=FALSE}
+model.thetaS.ml <- aov(thetaS.mirt.ml.bias ~ Factor*I*N*Fg*Fs, data=theta.mirt.ML.summarise)
+s.thetaS.ml <- summary(model.thetaS.ml)
+s.thetaS.ml[[1]][s.thetaS.ml[[1]][["Pr(>F)"]] < 0.05 , ]
+```

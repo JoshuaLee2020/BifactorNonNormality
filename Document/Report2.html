@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jujia">
+
+<title>Report of Parameter Estimation of Nonnormal Bifactor Model</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Report2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Report2_files/libs/quarto-html/quarto.js"></script>
+<script src="Report2_files/libs/quarto-html/popper.min.js"></script>
+<script src="Report2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Report2_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Report2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Report2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Report2_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Report2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Report2_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Report of Parameter Estimation of Nonnormal Bifactor Model</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jujia </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<section id="calculate-bias-and-rmse" class="level5">
+<h5 class="anchored" data-anchor-id="calculate-bias-and-rmse">Calculate Bias and Rmse</h5>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'Factor', 'I', 'N', 'Fg'. You can override
+using the `.groups` argument.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Factor        I           N             Fg            Fs    
+ Min.   :2   Min.   : 5.0   250 :54   Normal  :54   Normal  :54  
+ 1st Qu.:2   1st Qu.: 5.0   500 :54   Moderate:54   Moderate:54  
+ Median :3   Median : 7.5   1000:54   Severe  :54   Severe  :54  
+ Mean   :3   Mean   : 7.5                                        
+ 3rd Qu.:4   3rd Qu.:10.0                                        
+ Max.   :4   Max.   :10.0                                        
+  aG.mirt.bias      aS.mirt.bias       c1.mirt.bias      c2.mirt.bias     
+ Min.   :-0.4370   Min.   :-0.07900   Min.   :-0.3330   Min.   :-0.28900  
+ 1st Qu.:-0.3490   1st Qu.:-0.05875   1st Qu.:-0.1588   1st Qu.:-0.15900  
+ Median :-0.2975   Median :-0.03400   Median :-0.1185   Median :-0.10500  
+ Mean   :-0.2049   Mean   :-0.02001   Mean   :-0.1196   Mean   :-0.10284  
+ 3rd Qu.: 0.0190   3rd Qu.: 0.01300   3rd Qu.:-0.0720   3rd Qu.:-0.03425  
+ Max.   : 0.2080   Max.   : 0.11300   Max.   : 0.0000   Max.   : 0.02000  
+  c3.mirt.bias       aG.mirt.rmse     aS.mirt.rmse     c1.mirt.rmse   
+ Min.   :-0.18700   Min.   :0.1230   Min.   :0.1120   Min.   :0.1210  
+ 1st Qu.:-0.09650   1st Qu.:0.3450   1st Qu.:0.1973   1st Qu.:0.1860  
+ Median :-0.05100   Median :0.4280   Median :0.2805   Median :0.2415  
+ Mean   :-0.04820   Mean   :0.4095   Mean   :0.3428   Mean   :0.2697  
+ 3rd Qu.:-0.00125   3rd Qu.:0.4858   3rd Qu.:0.4032   3rd Qu.:0.3150  
+ Max.   : 0.12700   Max.   :0.9670   Max.   :1.0120   Max.   :0.7630  
+  c2.mirt.rmse     c3.mirt.rmse   
+ Min.   :0.1080   Min.   :0.1190  
+ 1st Qu.:0.1665   1st Qu.:0.1710  
+ Median :0.2100   Median :0.2195  
+ Mean   :0.2114   Mean   :0.2358  
+ 3rd Qu.:0.2540   3rd Qu.:0.2682  
+ Max.   :0.4150   Max.   :0.7240  </code></pre>
+</div>
+</div>
+</section>
+<section id="merge-all-bias-and-rmse-into-a-longer-table" class="level5">
+<h5 class="anchored" data-anchor-id="merge-all-bias-and-rmse-into-a-longer-table">Merge all Bias and Rmse into a longer table</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     Factor        I           N              Fg             Fs     
+ Min.   :2   Min.   : 5.0   250 :540   Normal  :540   Normal  :540  
+ 1st Qu.:2   1st Qu.: 5.0   500 :540   Moderate:540   Moderate:540  
+ Median :3   Median : 7.5   1000:540   Severe  :540   Severe  :540  
+ Mean   :3   Mean   : 7.5                                           
+ 3rd Qu.:4   3rd Qu.:10.0                                           
+ Max.   :4   Max.   :10.0                                           
+ metrics_name          metrics        
+ Length:1620        Min.   :-0.43700  
+ Class :character   1st Qu.:-0.07000  
+ Mode  :character   Median : 0.11600  
+                    Mean   : 0.09737  
+                    3rd Qu.: 0.25125  
+                    Max.   : 1.01200  </code></pre>
+</div>
+</div>
+</section>
+<section id="convergence-rate" class="level3">
+<h3 class="anchored" data-anchor-id="convergence-rate">0. Convergence Rate</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>table.all.convergence <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">paste0</span>(result.folder,<span class="st">"convergence.csv"</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>convergence.ana <span class="ot">&lt;-</span> table.all.convergence <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">condition=</span><span class="fu">paste0</span>(Factor,<span class="st">"-"</span>,I,<span class="st">"-"</span>,N))<span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(condition)<span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">con.ratio =</span> <span class="fu">sum</span>(mirt..bfconvergence<span class="sc">!=</span><span class="dv">0</span>) <span class="sc">/</span> <span class="fu">n</span>())</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>convergence.ana</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 18 × 2
+   condition con.ratio
+   &lt;chr&gt;         &lt;dbl&gt;
+ 1 2-10-1000     0.999
+ 2 2-10-250      0.951
+ 3 2-10-500      0.996
+ 4 2-5-1000      0.944
+ 5 2-5-250       0.78 
+ 6 2-5-500       0.916
+ 7 3-10-1000     1    
+ 8 3-10-250      0.98 
+ 9 3-10-500      0.998
+10 3-5-1000      0.958
+11 3-5-250       0.808
+12 3-5-500       0.933
+13 4-10-1000     1    
+14 4-10-250      0.988
+15 4-10-500      0.999
+16 4-5-1000      0.946
+17 4-5-250       0.786
+18 4-5-500       0.9  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> convergence.ana, <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y =</span> con.ratio)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="sc">-</span><span class="dv">45</span>, <span class="at">vjust=</span><span class="fl">0.4</span>,<span class="at">hjust=</span><span class="fl">1.2</span>),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Report2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="bias" class="level3">
+<h3 class="anchored" data-anchor-id="bias">1. Bias</h3>
+<section id="plot-comparison-of-ag-and-as-under-1000-sample-size" class="level5">
+<h5 class="anchored" data-anchor-id="plot-comparison-of-ag-and-as-under-1000-sample-size">Plot comparison of aG and aS, under 1000 sample size</h5>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Report2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="plot-comparison-of-ag-and-as-under-250-sample-size" class="level5">
+<h5 class="anchored" data-anchor-id="plot-comparison-of-ag-and-as-under-250-sample-size">Plot comparison of aG and aS, under 250 sample size</h5>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Report2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="plot-comparison-of-c1-c2-and-c3-under-1000-sample-size" class="level5">
+<h5 class="anchored" data-anchor-id="plot-comparison-of-c1-c2-and-c3-under-1000-sample-size">Plot comparison of c1, c2, and c3 under 1000 sample size</h5>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Report2_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="rmse" class="level3">
+<h3 class="anchored" data-anchor-id="rmse">2. RMSE</h3>
+<section id="plot-rmse-of-ag-and-as-under-1000-sample-size" class="level5">
+<h5 class="anchored" data-anchor-id="plot-rmse-of-ag-and-as-under-1000-sample-size">Plot rmse of aG and aS, under 1000 sample size</h5>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Report2_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="plot-rmse-of-c1-c2-and-c3-under-1000-sample-size" class="level5">
+<h5 class="anchored" data-anchor-id="plot-rmse-of-c1-c2-and-c3-under-1000-sample-size">Plot rmse of c1, c2, and c3 under 1000 sample size</h5>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Report2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="outliers" class="level3">
+<h3 class="anchored" data-anchor-id="outliers">3. Outliers</h3>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Report2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="trends-in-all-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="trends-in-all-conditions">4. Trends in all conditions</h3>
+<section id="bias-of-a-in-general-factor-trim-outliers-3" class="level5">
+<h5 class="anchored" data-anchor-id="bias-of-a-in-general-factor-trim-outliers-3">Bias of a in General Factor (Trim Outliers &gt; 3)</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5555</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Deleted"</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Report2_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="bias-of-a-in-specific-factor-trim-outliers-1.5" class="level5">
+<h5 class="anchored" data-anchor-id="bias-of-a-in-specific-factor-trim-outliers-1.5">Bias of a in Specific Factor (Trim Outliers &gt; 1.5)</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 281435</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Deleted"</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Report2_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="impact-of-all-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="impact-of-all-conditions">5. IMPACT of all conditions</h3>
+<section id="anova-for-ag---a-of-general-factor" class="level5">
+<h5 class="anchored" data-anchor-id="anova-for-ag---a-of-general-factor">ANOVA for aG - a of General Factor</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Df Sum Sq Mean Sq    F value    Pr(&gt;F)    
+Factor            1 0.0177 0.01771    99.0705 8.065e-14 ***
+I                 1 0.0023 0.00226    12.6392 0.0007946 ***
+N                 2 0.1436 0.07182   401.7764 &lt; 2.2e-16 ***
+Fg                2 5.4722 2.73612 15305.9156 &lt; 2.2e-16 ***
+Factor:I          1 0.0052 0.00522    29.2133 1.504e-06 ***
+Factor:N          2 0.0041 0.00203    11.3635 7.604e-05 ***
+I:N               2 0.0251 0.01254    70.1673 9.633e-16 ***
+Factor:Fg         2 0.0353 0.01766    98.7922 &lt; 2.2e-16 ***
+I:Fg              2 0.0678 0.03391   189.6965 &lt; 2.2e-16 ***
+N:Fg              4 0.0026 0.00065     3.6264 0.0108944 *  
+Factor:I:N        2 0.0016 0.00078     4.3531 0.0176700 *  
+NA                                                         
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="anova-for-as---a-of-specific-factor" class="level5">
+<h5 class="anchored" data-anchor-id="anova-for-as---a-of-specific-factor">ANOVA for aS - a of Specific Factor</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Df   Sum Sq  Mean Sq  F value    Pr(&gt;F)    
+Factor            1 0.002513 0.002513  27.9366 2.313e-06 ***
+I                 1 0.044634 0.044634 496.1214 &lt; 2.2e-16 ***
+N                 2 0.041800 0.020900 232.3116 &lt; 2.2e-16 ***
+Fg                2 0.003515 0.001757  19.5334 4.142e-07 ***
+Fs                2 0.165061 0.082531 917.3531 &lt; 2.2e-16 ***
+I:N               2 0.023936 0.011968 133.0280 &lt; 2.2e-16 ***
+Fg:Fs             4 0.005473 0.001368  15.2085 2.175e-08 ***
+I:Fg:Fs           4 0.001322 0.000331   3.6749   0.01018 *  
+NA                                                          
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="anova-for-c1" class="level5">
+<h5 class="anchored" data-anchor-id="anova-for-c1">ANOVA for c1</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Df  Sum Sq  Mean Sq   F value    Pr(&gt;F)    
+Factor            1 0.02445 0.024450  129.3220 5.945e-16 ***
+I                 1 0.11435 0.114348  604.8098 &lt; 2.2e-16 ***
+N                 2 0.07274 0.036368  192.3548 &lt; 2.2e-16 ***
+Fg                2 0.43334 0.216669 1146.0039 &lt; 2.2e-16 ***
+Fs                2 0.02203 0.011017   58.2705 3.275e-14 ***
+Factor:I          1 0.00383 0.003828   20.2482 3.658e-05 ***
+Factor:N          2 0.00199 0.000995    5.2622  0.008167 ** 
+I:N               2 0.01488 0.007440   39.3530 2.861e-11 ***
+Factor:Fg         2 0.00653 0.003264   17.2628 1.599e-06 ***
+I:Fg              2 0.00938 0.004692   24.8157 2.272e-08 ***
+Factor:N:Fs       4 0.00205 0.000513    2.7157  0.039160 *  
+NA                                                          
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="anova-for-c2" class="level5">
+<h5 class="anchored" data-anchor-id="anova-for-c2">ANOVA for c2</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Df  Sum Sq Mean Sq   F value    Pr(&gt;F)    
+Factor            1 0.01088 0.01088  103.4138 3.763e-14 ***
+I                 1 0.03368 0.03368  320.1652 &lt; 2.2e-16 ***
+Fg                2 0.71217 0.35608 3384.5079 &lt; 2.2e-16 ***
+Fs                2 0.06300 0.03150  299.3932 &lt; 2.2e-16 ***
+Factor:I          1 0.00042 0.00042    4.0304  0.049703 *  
+Factor:Fg         2 0.01004 0.00502   47.6947 1.169e-12 ***
+I:Fg              2 0.02129 0.01065  101.1856 &lt; 2.2e-16 ***
+Fg:Fs             4 0.00150 0.00037    3.5631  0.011898 *  
+Factor:N:Fs       4 0.00175 0.00044    4.1561  0.005242 ** 
+NA                                                         
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="anova-for-c3" class="level5">
+<h5 class="anchored" data-anchor-id="anova-for-c3">ANOVA for c3</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Df  Sum Sq  Mean Sq   F value    Pr(&gt;F)    
+I                 1 0.00442 0.004418   39.6003 5.763e-08 ***
+N                 2 0.06620 0.033102  296.7055 &lt; 2.2e-16 ***
+Fg                2 0.50998 0.254988 2285.5630 &lt; 2.2e-16 ***
+Fs                2 0.02816 0.014080  126.2051 &lt; 2.2e-16 ***
+Factor:I          1 0.00100 0.001002    8.9834 0.0041106 ** 
+Factor:N          2 0.00178 0.000891    7.9822 0.0009183 ***
+I:N               2 0.01686 0.008431   75.5719 2.234e-16 ***
+Factor:Fg         2 0.00534 0.002669   23.9196 3.639e-08 ***
+I:Fg              2 0.01209 0.006046   54.1959 1.229e-13 ***
+NA                                                          
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
