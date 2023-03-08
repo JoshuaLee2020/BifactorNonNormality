@@ -19,7 +19,9 @@ library(ggplot2)
 ```
 
 ##### Calculate Bias and Rmse
+
 ######Infinite Number in MAP:
+
 ```{r, echo=FALSE, warning=FALSE}
 # Set folder and Input data
 main.folder <- "C:/Research/BifactorNonNormality"
@@ -42,8 +44,8 @@ theta.mirt.MAP.report <- para.theta.all%>%
 nrow(para.theta.all)-nrow(theta.mirt.MAP.report)
 ```
 
-
 ######Infinite Number in ML
+
 ```{r, echo=FALSE, warning=FALSE}
 theta.mirt.ML.report <- para.theta.all%>%
   filter(!is.infinite(thetaG.mirt.ml))%>%
@@ -230,6 +232,7 @@ p1 <- ggplot(data = df_1000, aes (x = interaction(Fs,Fg), y = value, color = met
   geom_vline(xintercept = c(3.5,6.5) , linetype = "dashed")
 p1
 ```
+
 ### 3. Correlation of Theta
 
 ##### Correlation of thetaG and thetaS, under 1000 sample size
@@ -330,6 +333,7 @@ model.thetaG.map.cor <- aov(thetaG.mirt.map.cor ~ Factor*I*N*Fg*Fs, data=theta.m
 s.thetaG.cor <- summary(model.thetaG.map.cor, digits = 4, signif.stars = TRUE)
 s.thetaG.cor 
 ```
+
 ##### ANOVA for correlation of thetaG using MAP
 
 ```{r, echo=FALSE}

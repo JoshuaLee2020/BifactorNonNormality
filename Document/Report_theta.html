@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jujia">
+
+<title>Report of Theta of Nonnormal Bifactor Model</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Report_theta_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Report_theta_files/libs/quarto-html/quarto.js"></script>
+<script src="Report_theta_files/libs/quarto-html/popper.min.js"></script>
+<script src="Report_theta_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Report_theta_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Report_theta_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Report_theta_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Report_theta_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Report_theta_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Report_theta_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Report of Theta of Nonnormal Bifactor Model</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jujia </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<section id="calculate-bias-and-rmse" class="level5">
+<h5 class="anchored" data-anchor-id="calculate-bias-and-rmse">Calculate Bias and Rmse</h5>
+<p>######Infinite Number in MAP:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<p>######Infinite Number in ML</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 272354</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'Factor', 'I', 'N', 'Fg'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'Factor', 'I', 'N', 'Fg'. You can override
+using the `.groups` argument.</code></pre>
+</div>
+</div>
+</section>
+<section id="merge-all-bias-and-rmse-into-a-longer-table" class="level5">
+<h5 class="anchored" data-anchor-id="merge-all-bias-and-rmse-into-a-longer-table">Merge all Bias and Rmse into a longer table</h5>
+<div class="cell">
+
+</div>
+</section>
+<section id="bias-of-theta" class="level3">
+<h3 class="anchored" data-anchor-id="bias-of-theta">1. Bias of Theta</h3>
+<section id="plot-comparison-map-and-ml-thetag-and-thetas-under-factor4-item10" class="level5">
+<h5 class="anchored" data-anchor-id="plot-comparison-map-and-ml-thetag-and-thetas-under-factor4-item10">Plot comparison MAP and ML : thetaG and thetaS, under Factor=4, Item=10</h5>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Report_theta_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="plot-comparison-map-and-ml-thetag-and-thetas-under-1000-sample-size" class="level5">
+<h5 class="anchored" data-anchor-id="plot-comparison-map-and-ml-thetag-and-thetas-under-1000-sample-size">Plot comparison MAP and ML : thetaG and thetaS, under 1000 sample size</h5>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Report_theta_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="rmse-of-theta" class="level3">
+<h3 class="anchored" data-anchor-id="rmse-of-theta">2. RMSE of Theta</h3>
+<section id="plot-comparison-map-and-ml-thetag-and-thetas-under-factor4-item10-1" class="level5">
+<h5 class="anchored" data-anchor-id="plot-comparison-map-and-ml-thetag-and-thetas-under-factor4-item10-1">Plot comparison MAP and ML : thetaG and thetaS, under Factor=4, Item=10</h5>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Report_theta_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="plot-comparison-map-and-ml-thetag-and-thetas-under-1000-sample-size-1" class="level5">
+<h5 class="anchored" data-anchor-id="plot-comparison-map-and-ml-thetag-and-thetas-under-1000-sample-size-1">Plot comparison MAP and ML : thetaG and thetaS, under 1000 sample size</h5>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Report_theta_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="correlation-of-theta" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-of-theta">3. Correlation of Theta</h3>
+<section id="plot-comparison-map-and-ml-thetag-and-thetas-under-factor4-item10-2" class="level5">
+<h5 class="anchored" data-anchor-id="plot-comparison-map-and-ml-thetag-and-thetas-under-factor4-item10-2">Plot comparison MAP and ML : thetaG and thetaS, under Factor=4, Item=10</h5>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Report_theta_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="plot-comparison-map-and-ml-thetag-and-thetas-under-1000-sample-size-2" class="level5">
+<h5 class="anchored" data-anchor-id="plot-comparison-map-and-ml-thetag-and-thetas-under-1000-sample-size-2">Plot comparison MAP and ML : thetaG and thetaS, under 1000 sample size</h5>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Report_theta_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="impact-of-all-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="impact-of-all-conditions">4. IMPACT of all conditions</h3>
+<section id="anova-for-thetag---theta-on-general-factor-using-map" class="level5">
+<h5 class="anchored" data-anchor-id="anova-for-thetag---theta-on-general-factor-using-map">ANOVA for thetaG - theta on General Factor using MAP</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Df    Sum Sq   Mean Sq
+Factor            2 0.0000141 7.060e-06
+I                 1 0.0001826 1.826e-04
+N                 2 0.0000263 1.313e-05
+Fg                2 0.0001651 8.257e-05
+Fs                2 0.0000640 3.200e-05
+Factor:I          2 0.0000732 3.660e-05
+Factor:N          4 0.0000219 5.460e-06
+I:N               2 0.0000531 2.656e-05
+Factor:Fg         4 0.0002129 5.321e-05
+I:Fg              2 0.0001780 8.901e-05
+N:Fg              4 0.0001250 3.126e-05
+Factor:Fs         4 0.0001242 3.106e-05
+I:Fs              2 0.0000818 4.091e-05
+N:Fs              4 0.0000416 1.041e-05
+Fg:Fs             4 0.0001125 2.813e-05
+Factor:I:N        4 0.0001091 2.727e-05
+Factor:I:Fg       4 0.0001201 3.002e-05
+Factor:N:Fg       8 0.0000892 1.115e-05
+I:N:Fg            4 0.0000182 4.560e-06
+Factor:I:Fs       4 0.0001447 3.617e-05
+Factor:N:Fs       8 0.0004284 5.355e-05
+I:N:Fs            4 0.0000190 4.750e-06
+Factor:Fg:Fs      8 0.0000749 9.370e-06
+I:Fg:Fs           4 0.0001121 2.802e-05
+N:Fg:Fs           8 0.0001725 2.156e-05
+Factor:I:N:Fg     8 0.0000963 1.204e-05
+Factor:I:N:Fs     8 0.0000785 9.810e-06
+Factor:I:Fg:Fs    8 0.0002882 3.602e-05
+Factor:N:Fg:Fs   16 0.0003591 2.245e-05
+I:N:Fg:Fs         8 0.0004618 5.772e-05
+Factor:I:N:Fg:Fs 16 0.0004513 2.821e-05</code></pre>
+</div>
+</div>
+</section>
+<section id="anova-for-thetas---theta-on-specific-factor-using-map" class="level5">
+<h5 class="anchored" data-anchor-id="anova-for-thetas---theta-on-specific-factor-using-map">ANOVA for thetaS - theta on Specific Factor using MAP</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Df    Sum Sq   Mean Sq
+Factor            2 2.500e-05 1.250e-05
+I                 1 3.660e-05 3.660e-05
+N                 2 1.744e-05 8.720e-06
+Fg                2 2.826e-05 1.413e-05
+Fs                2 1.715e-05 8.570e-06
+Factor:I          2 3.394e-05 1.697e-05
+Factor:N          4 2.578e-05 6.440e-06
+I:N               2 1.083e-05 5.410e-06
+Factor:Fg         4 1.104e-04 2.760e-05
+I:Fg              2 9.790e-06 4.900e-06
+N:Fg              4 7.960e-06 1.990e-06
+Factor:Fs         4 1.190e-06 3.000e-07
+I:Fs              2 2.335e-05 1.167e-05
+N:Fs              4 7.085e-05 1.771e-05
+Fg:Fs             4 2.326e-05 5.810e-06
+Factor:I:N        4 6.470e-06 1.620e-06
+Factor:I:Fg       4 2.473e-05 6.180e-06
+Factor:N:Fg       8 5.859e-05 7.320e-06
+I:N:Fg            4 2.984e-05 7.460e-06
+Factor:I:Fs       4 1.417e-05 3.540e-06
+Factor:N:Fs       8 4.470e-05 5.590e-06
+I:N:Fs            4 7.428e-05 1.857e-05
+Factor:Fg:Fs      8 1.072e-04 1.340e-05
+I:Fg:Fs           4 1.988e-05 4.970e-06
+N:Fg:Fs           8 8.019e-05 1.002e-05
+Factor:I:N:Fg     8 4.064e-05 5.080e-06
+Factor:I:N:Fs     8 7.986e-05 9.980e-06
+Factor:I:Fg:Fs    8 4.472e-05 5.590e-06
+Factor:N:Fg:Fs   16 1.178e-04 7.360e-06
+I:N:Fg:Fs         8 4.527e-05 5.660e-06
+Factor:I:N:Fg:Fs 16 1.441e-04 9.010e-06</code></pre>
+</div>
+</div>
+</section>
+<section id="anova-for-thetag---theta-on-general-factor-using-ml" class="level5">
+<h5 class="anchored" data-anchor-id="anova-for-thetag---theta-on-general-factor-using-ml">ANOVA for thetaG - theta on General Factor using ML</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Df Sum Sq Mean Sq
+Factor            2 0.0042  0.0021
+I                 1 0.0134  0.0134
+N                 2 0.0000  0.0000
+Fg                2 0.8064  0.4032
+Fs                2 0.0026  0.0013
+Factor:I          2 0.0096  0.0048
+Factor:N          4 0.0001  0.0000
+I:N               2 0.0003  0.0002
+Factor:Fg         4 0.0011  0.0003
+I:Fg              2 0.0174  0.0087
+N:Fg              4 0.0004  0.0001
+Factor:Fs         4 0.0003  0.0001
+I:Fs              2 0.0008  0.0004
+N:Fs              4 0.0001  0.0000
+Fg:Fs             4 0.0010  0.0003
+Factor:I:N        4 0.0001  0.0000
+Factor:I:Fg       4 0.0061  0.0015
+Factor:N:Fg       8 0.0006  0.0001
+I:N:Fg            4 0.0004  0.0001
+Factor:I:Fs       4 0.0006  0.0001
+Factor:N:Fs       8 0.0012  0.0002
+I:N:Fs            4 0.0001  0.0000
+Factor:Fg:Fs      8 0.0005  0.0001
+I:Fg:Fs           4 0.0004  0.0001
+N:Fg:Fs           8 0.0008  0.0001
+Factor:I:N:Fg     8 0.0004  0.0001
+Factor:I:N:Fs     8 0.0002  0.0000
+Factor:I:Fg:Fs    8 0.0007  0.0001
+Factor:N:Fg:Fs   16 0.0011  0.0001
+I:N:Fg:Fs         8 0.0007  0.0001
+Factor:I:N:Fg:Fs 16 0.0009  0.0001</code></pre>
+</div>
+</div>
+</section>
+<section id="anova-for-thetas---theta-on-specific-factor-using-ml" class="level5">
+<h5 class="anchored" data-anchor-id="anova-for-thetas---theta-on-specific-factor-using-ml">ANOVA for thetaS - theta on Specific Factor using ML</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Df Sum Sq Mean Sq
+Factor            2 0.1814  0.0907
+I                 1 0.7126  0.7126
+N                 2 0.0075  0.0037
+Fg                2 0.3706  0.1853
+Fs                2 0.2589  0.1294
+Factor:I          2 0.0036  0.0018
+Factor:N          4 0.0001  0.0000
+I:N               2 0.0075  0.0037
+Factor:Fg         4 0.2032  0.0508
+I:Fg              2 0.4646  0.2323
+N:Fg              4 0.0098  0.0024
+Factor:Fs         4 0.0003  0.0001
+I:Fs              2 0.0148  0.0074
+N:Fs              4 0.0028  0.0007
+Fg:Fs             4 0.0439  0.0110
+Factor:I:N        4 0.0002  0.0000
+Factor:I:Fg       4 0.0024  0.0006
+Factor:N:Fg       8 0.0008  0.0001
+I:N:Fg            4 0.0014  0.0003
+Factor:I:Fs       4 0.0002  0.0000
+Factor:N:Fs       8 0.0030  0.0004
+I:N:Fs            4 0.0003  0.0001
+Factor:Fg:Fs      8 0.0036  0.0005
+I:Fg:Fs           4 0.0090  0.0023
+N:Fg:Fs           8 0.0034  0.0004
+Factor:I:N:Fg     8 0.0038  0.0005
+Factor:I:N:Fs     8 0.0022  0.0003
+Factor:I:Fg:Fs    8 0.0022  0.0003
+Factor:N:Fg:Fs   16 0.0045  0.0003
+I:N:Fg:Fs         8 0.0018  0.0002
+Factor:I:N:Fg:Fs 16 0.0081  0.0005</code></pre>
+</div>
+</div>
+</section>
+<section id="anova-for-correlation-of-thetag-using-map" class="level5">
+<h5 class="anchored" data-anchor-id="anova-for-correlation-of-thetag-using-map">ANOVA for correlation of thetaG using MAP</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Df  Sum Sq Mean Sq
+Factor            2 0.07341 0.03671
+I                 1 0.04929 0.04929
+N                 2 0.00156 0.00078
+Fg                2 0.09096 0.04548
+Fs                2 0.00026 0.00013
+Factor:I          2 0.00314 0.00157
+Factor:N          4 0.00021 0.00005
+I:N               2 0.00000 0.00000
+Factor:Fg         4 0.00403 0.00101
+I:Fg              2 0.00269 0.00135
+N:Fg              4 0.00017 0.00004
+Factor:Fs         4 0.00001 0.00000
+I:Fs              2 0.00001 0.00000
+N:Fs              4 0.00001 0.00000
+Fg:Fs             4 0.00001 0.00000
+Factor:I:N        4 0.00001 0.00000
+Factor:I:Fg       4 0.00007 0.00002
+Factor:N:Fg       8 0.00004 0.00001
+I:N:Fg            4 0.00001 0.00000
+Factor:I:Fs       4 0.00004 0.00001
+Factor:N:Fs       8 0.00001 0.00000
+I:N:Fs            4 0.00000 0.00000
+Factor:Fg:Fs      8 0.00002 0.00000
+I:Fg:Fs           4 0.00000 0.00000
+N:Fg:Fs           8 0.00002 0.00000
+Factor:I:N:Fg     8 0.00005 0.00001
+Factor:I:N:Fs     8 0.00004 0.00000
+Factor:I:Fg:Fs    8 0.00001 0.00000
+Factor:N:Fg:Fs   16 0.00004 0.00000
+I:N:Fg:Fs         8 0.00001 0.00000
+Factor:I:N:Fg:Fs 16 0.00005 0.00000</code></pre>
+</div>
+</div>
+</section>
+<section id="anova-for-correlation-of-thetag-using-map-1" class="level5">
+<h5 class="anchored" data-anchor-id="anova-for-correlation-of-thetag-using-map-1">ANOVA for correlation of thetaG using MAP</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Df Sum Sq Mean Sq
+Factor            2 0.0063  0.0032
+I                 1 0.8829  0.8829
+N                 2 0.1243  0.0621
+Fg                2 0.0013  0.0007
+Fs                2 0.1658  0.0829
+Factor:I          2 0.0008  0.0004
+Factor:N          4 0.0036  0.0009
+I:N               2 0.0039  0.0019
+Factor:Fg         4 0.0005  0.0001
+I:Fg              2 0.0008  0.0004
+N:Fg              4 0.0003  0.0001
+Factor:Fs         4 0.0004  0.0001
+I:Fs              2 0.0004  0.0002
+N:Fs              4 0.0005  0.0001
+Fg:Fs             4 0.0008  0.0002
+Factor:I:N        4 0.0003  0.0001
+Factor:I:Fg       4 0.0004  0.0001
+Factor:N:Fg       8 0.0003  0.0000
+I:N:Fg            4 0.0001  0.0000
+Factor:I:Fs       4 0.0003  0.0001
+Factor:N:Fs       8 0.0006  0.0001
+I:N:Fs            4 0.0003  0.0001
+Factor:Fg:Fs      8 0.0006  0.0001
+I:Fg:Fs           4 0.0002  0.0000
+N:Fg:Fs           8 0.0003  0.0000
+Factor:I:N:Fg     8 0.0004  0.0000
+Factor:I:N:Fs     8 0.0005  0.0001
+Factor:I:Fg:Fs    8 0.0002  0.0000
+Factor:N:Fg:Fs   16 0.0012  0.0001
+I:N:Fg:Fs         8 0.0003  0.0000
+Factor:I:N:Fg:Fs 16 0.0005  0.0000</code></pre>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

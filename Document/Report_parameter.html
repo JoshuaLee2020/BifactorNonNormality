@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -87,16 +87,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 
-<script src="Report2_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Report2_files/libs/quarto-html/quarto.js"></script>
-<script src="Report2_files/libs/quarto-html/popper.min.js"></script>
-<script src="Report2_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="Report2_files/libs/quarto-html/anchor.min.js"></script>
-<link href="Report2_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Report2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="Report2_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="Report2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Report2_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="Report_parameter_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Report_parameter_files/libs/quarto-html/quarto.js"></script>
+<script src="Report_parameter_files/libs/quarto-html/popper.min.js"></script>
+<script src="Report_parameter_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Report_parameter_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Report_parameter_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Report_parameter_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Report_parameter_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Report_parameter_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Report_parameter_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -140,187 +140,120 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>`summarise()` has grouped output by 'Factor', 'I', 'N', 'Fg'. You can override
 using the `.groups` argument.</code></pre>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     Factor        I           N             Fg            Fs    
- Min.   :2   Min.   : 5.0   250 :54   Normal  :54   Normal  :54  
- 1st Qu.:2   1st Qu.: 5.0   500 :54   Moderate:54   Moderate:54  
- Median :3   Median : 7.5   1000:54   Severe  :54   Severe  :54  
- Mean   :3   Mean   : 7.5                                        
- 3rd Qu.:4   3rd Qu.:10.0                                        
- Max.   :4   Max.   :10.0                                        
-  aG.mirt.bias      aS.mirt.bias       c1.mirt.bias      c2.mirt.bias     
- Min.   :-0.4370   Min.   :-0.07900   Min.   :-0.3330   Min.   :-0.28900  
- 1st Qu.:-0.3490   1st Qu.:-0.05875   1st Qu.:-0.1588   1st Qu.:-0.15900  
- Median :-0.2975   Median :-0.03400   Median :-0.1185   Median :-0.10500  
- Mean   :-0.2049   Mean   :-0.02001   Mean   :-0.1196   Mean   :-0.10284  
- 3rd Qu.: 0.0190   3rd Qu.: 0.01300   3rd Qu.:-0.0720   3rd Qu.:-0.03425  
- Max.   : 0.2080   Max.   : 0.11300   Max.   : 0.0000   Max.   : 0.02000  
-  c3.mirt.bias       aG.mirt.rmse     aS.mirt.rmse     c1.mirt.rmse   
- Min.   :-0.18700   Min.   :0.1230   Min.   :0.1120   Min.   :0.1210  
- 1st Qu.:-0.09650   1st Qu.:0.3450   1st Qu.:0.1973   1st Qu.:0.1860  
- Median :-0.05100   Median :0.4280   Median :0.2805   Median :0.2415  
- Mean   :-0.04820   Mean   :0.4095   Mean   :0.3428   Mean   :0.2697  
- 3rd Qu.:-0.00125   3rd Qu.:0.4858   3rd Qu.:0.4032   3rd Qu.:0.3150  
- Max.   : 0.12700   Max.   :0.9670   Max.   :1.0120   Max.   :0.7630  
-  c2.mirt.rmse     c3.mirt.rmse   
- Min.   :0.1080   Min.   :0.1190  
- 1st Qu.:0.1665   1st Qu.:0.1710  
- Median :0.2100   Median :0.2195  
- Mean   :0.2114   Mean   :0.2358  
- 3rd Qu.:0.2540   3rd Qu.:0.2682  
- Max.   :0.4150   Max.   :0.7240  </code></pre>
-</div>
 </div>
 </section>
 <section id="merge-all-bias-and-rmse-into-a-longer-table" class="level5">
 <h5 class="anchored" data-anchor-id="merge-all-bias-and-rmse-into-a-longer-table">Merge all Bias and Rmse into a longer table</h5>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>     Factor        I           N              Fg             Fs     
- Min.   :2   Min.   : 5.0   250 :540   Normal  :540   Normal  :540  
- 1st Qu.:2   1st Qu.: 5.0   500 :540   Moderate:540   Moderate:540  
- Median :3   Median : 7.5   1000:540   Severe  :540   Severe  :540  
- Mean   :3   Mean   : 7.5                                           
- 3rd Qu.:4   3rd Qu.:10.0                                           
- Max.   :4   Max.   :10.0                                           
- metrics_name          metrics        
- Length:1620        Min.   :-0.43700  
- Class :character   1st Qu.:-0.07000  
- Mode  :character   Median : 0.11600  
-                    Mean   : 0.09737  
-                    3rd Qu.: 0.25125  
-                    Max.   : 1.01200  </code></pre>
+<pre><code>     Factor        I           N                                  Fg     
+ Min.   :2   Min.   : 5.0   250 :810   Skewness(G Facotr): Normal  :810  
+ 1st Qu.:2   1st Qu.: 5.0   500 :810   Skewness(G Facotr): Moderate:810  
+ Median :3   Median : 7.5   1000:810   Skewness(G Facotr): Severe  :810  
+ Mean   :3   Mean   : 7.5                                                
+ 3rd Qu.:4   3rd Qu.:10.0                                                
+ Max.   :4   Max.   :10.0                                                
+                            Fs      metrics_name           value         
+ Skewness(S Facotr): Normal  :810   Length:2430        Min.   :-0.43700  
+ Skewness(S Facotr): Moderate:810   Class :character   1st Qu.:-0.00975  
+ Skewness(S Facotr): Severe  :810   Mode  :character   Median : 0.24600  
+                                                       Mean   : 0.39166  
+                                                       3rd Qu.: 1.00000  
+                                                       Max.   : 1.01200  </code></pre>
 </div>
 </div>
 </section>
 <section id="convergence-rate" class="level3">
 <h3 class="anchored" data-anchor-id="convergence-rate">0. Convergence Rate</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>table.all.convergence <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">paste0</span>(result.folder,<span class="st">"convergence.csv"</span>))</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>convergence.ana <span class="ot">&lt;-</span> table.all.convergence <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">condition=</span><span class="fu">paste0</span>(Factor,<span class="st">"-"</span>,I,<span class="st">"-"</span>,N))<span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(condition)<span class="sc">%&gt;%</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">con.ratio =</span> <span class="fu">sum</span>(mirt..bfconvergence<span class="sc">!=</span><span class="dv">0</span>) <span class="sc">/</span> <span class="fu">n</span>())</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>convergence.ana</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 18 × 2
-   condition con.ratio
-   &lt;chr&gt;         &lt;dbl&gt;
- 1 2-10-1000     0.999
- 2 2-10-250      0.951
- 3 2-10-500      0.996
- 4 2-5-1000      0.944
- 5 2-5-250       0.78 
- 6 2-5-500       0.916
- 7 3-10-1000     1    
- 8 3-10-250      0.98 
- 9 3-10-500      0.998
-10 3-5-1000      0.958
-11 3-5-250       0.808
-12 3-5-500       0.933
-13 4-10-1000     1    
-14 4-10-250      0.988
-15 4-10-500      0.999
-16 4-5-1000      0.946
-17 4-5-250       0.786
-18 4-5-500       0.9  </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> convergence.ana, <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y =</span> con.ratio)) <span class="sc">+</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="sc">-</span><span class="dv">45</span>, <span class="at">vjust=</span><span class="fl">0.4</span>,<span class="at">hjust=</span><span class="fl">1.2</span>),</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>table.all.convergence <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">paste0</span>(result.folder,<span class="st">"convergence.csv"</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>convergence.ana <span class="ot">&lt;-</span> table.all.convergence <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">condition=</span><span class="fu">paste0</span>(Factor,<span class="st">"-"</span>,I,<span class="st">"-"</span>,N))<span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(condition)<span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">con.ratio =</span> <span class="fu">sum</span>(mirt..bfconvergence<span class="sc">!=</span><span class="dv">0</span>) <span class="sc">/</span> <span class="fu">n</span>())</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> convergence.ana, <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y =</span> con.ratio)) <span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="sc">-</span><span class="dv">45</span>, <span class="at">vjust=</span><span class="fl">0.4</span>,<span class="at">hjust=</span><span class="fl">1.2</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Report2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="Report_parameter_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
 <section id="bias" class="level3">
 <h3 class="anchored" data-anchor-id="bias">1. Bias</h3>
-<section id="plot-comparison-of-ag-and-as-under-1000-sample-size" class="level5">
-<h5 class="anchored" data-anchor-id="plot-comparison-of-ag-and-as-under-1000-sample-size">Plot comparison of aG and aS, under 1000 sample size</h5>
+<section id="bias-of-a-on-general-factor-and-specific-factor-on-factor4-i10" class="level5">
+<h5 class="anchored" data-anchor-id="bias-of-a-on-general-factor-and-specific-factor-on-factor4-i10">Bias of a on General Factor and Specific Factor on Factor=4, I=10</h5>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Report2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="Report_parameter_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="plot-comparison-of-ag-and-as-under-250-sample-size" class="level5">
-<h5 class="anchored" data-anchor-id="plot-comparison-of-ag-and-as-under-250-sample-size">Plot comparison of aG and aS, under 250 sample size</h5>
+<section id="bias-of-a-on-general-factor-and-specific-factor-on-1000-sample-size" class="level5">
+<h5 class="anchored" data-anchor-id="bias-of-a-on-general-factor-and-specific-factor-on-1000-sample-size">Bias of a on General Factor and Specific Factor on 1000 Sample Size</h5>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Report2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<p><img src="Report_parameter_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="plot-comparison-of-c1-c2-and-c3-under-1000-sample-size" class="level5">
-<h5 class="anchored" data-anchor-id="plot-comparison-of-c1-c2-and-c3-under-1000-sample-size">Plot comparison of c1, c2, and c3 under 1000 sample size</h5>
+<section id="plot-comparison-of-c1-c2-and-c3-on-factor4-item10" class="level5">
+<h5 class="anchored" data-anchor-id="plot-comparison-of-c1-c2-and-c3-on-factor4-item10">Plot comparison of c1, c2, and c3 on Factor=4, Item=10</h5>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Report2_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<p><img src="Report_parameter_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
 </section>
 <section id="rmse" class="level3">
 <h3 class="anchored" data-anchor-id="rmse">2. RMSE</h3>
-<section id="plot-rmse-of-ag-and-as-under-1000-sample-size" class="level5">
-<h5 class="anchored" data-anchor-id="plot-rmse-of-ag-and-as-under-1000-sample-size">Plot rmse of aG and aS, under 1000 sample size</h5>
+<section id="plot-rmse-of-ag-and-as-on-factor4-and-item10" class="level5">
+<h5 class="anchored" data-anchor-id="plot-rmse-of-ag-and-as-on-factor4-and-item10">Plot rmse of aG and aS, on Factor:4 and Item:10</h5>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Report2_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="Report_parameter_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="plot-rmse-of-c1-c2-and-c3-under-1000-sample-size" class="level5">
-<h5 class="anchored" data-anchor-id="plot-rmse-of-c1-c2-and-c3-under-1000-sample-size">Plot rmse of c1, c2, and c3 under 1000 sample size</h5>
+<section id="rmse-of-a-on-general-factor-and-specific-factor-on-1000-sample-size" class="level5">
+<h5 class="anchored" data-anchor-id="rmse-of-a-on-general-factor-and-specific-factor-on-1000-sample-size">RMSE of a on General Factor and Specific Factor on 1000 Sample Size</h5>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Report2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="Report_parameter_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-</section>
-<section id="outliers" class="level3">
-<h3 class="anchored" data-anchor-id="outliers">3. Outliers</h3>
+<section id="plot-comparison-of-rmse-of-c1-c2-and-c3-on-factor4-item10" class="level5">
+<h5 class="anchored" data-anchor-id="plot-comparison-of-rmse-of-c1-c2-and-c3-on-factor4-item10">Plot comparison of rmse of c1, c2, and c3 on Factor=4, Item=10</h5>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Report2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<p><img src="Report_parameter_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
 </section>
 <section id="trends-in-all-conditions" class="level3">
-<h3 class="anchored" data-anchor-id="trends-in-all-conditions">4. Trends in all conditions</h3>
+<h3 class="anchored" data-anchor-id="trends-in-all-conditions">3. Trends in all conditions</h3>
 <section id="bias-of-a-in-general-factor-trim-outliers-3" class="level5">
 <h5 class="anchored" data-anchor-id="bias-of-a-in-general-factor-trim-outliers-3">Bias of a in General Factor (Trim Outliers &gt; 3)</h5>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5555</code></pre>
+<pre><code>[1] 422</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Deleted"</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="Report2_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<section id="bias-of-a-in-specific-factor-trim-outliers-1.5" class="level5">
-<h5 class="anchored" data-anchor-id="bias-of-a-in-specific-factor-trim-outliers-1.5">Bias of a in Specific Factor (Trim Outliers &gt; 1.5)</h5>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 281435</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Deleted"</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="Report2_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<p><img src="Report_parameter_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
 </section>
-<section id="impact-of-all-conditions" class="level3">
-<h3 class="anchored" data-anchor-id="impact-of-all-conditions">5. IMPACT of all conditions</h3>
+<section id="impact-of-all-factors-of-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="impact-of-all-factors-of-conditions">4. IMPACT of all Factors of Conditions</h3>
 <section id="anova-for-ag---a-of-general-factor" class="level5">
 <h5 class="anchored" data-anchor-id="anova-for-ag---a-of-general-factor">ANOVA for aG - a of General Factor</h5>
 <div class="cell">
